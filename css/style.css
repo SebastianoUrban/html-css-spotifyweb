@@ -11,11 +11,9 @@ html{
 :root{
     --header-width: 230px;
     --footer-height: 100px;
-    --sm-size: 576px;
-    --md-size: 768px;
-    --lg-size: 992px;
-    --xl-size: 1200px;
-    --xxl-size: 1400px;
+
+    --default-space-between-discs: 10px;
+    --default-padding-sections: 20px;
 }
 
 
@@ -38,12 +36,57 @@ header{
 }
 
 
+
+
+
+
+
+
 /* MAIN */
 main{
     width: calc(100% - var(--header-width));
     height: calc(100vh - var(--footer-height)); /*non strettamente necessario*/
     background-color: blue;
 }
+
+main>section {
+    padding: var(--default-padding-sections);
+}
+
+/* discs and disk */
+
+article.disk {
+    height: 145px;
+    width: 145px;
+    background-color: aquamarine;
+    border: 1px solid black;
+    margin-left: var(--default-space-between-discs);
+    margin-top: 20px;
+}
+
+article.disk:nth-child(1) {
+    margin-left: 0;
+}
+
+div.discs {
+    justify-content: space-between;
+}
+
+
+
+
+/* recently */
+section#recently {
+    
+}
+
+/* created-for */
+section#created-for {
+}
+
+
+
+
 
 
 
@@ -53,3 +96,67 @@ footer{
     height: var(--footer-height);
     background-color: gray;
 }
+
+
+
+
+/* MEDIA QUERIES */
+
+@media all and (max-width: 1200px) {
+    main{
+        background-color: fuchsia;
+    }
+
+    article.disk {
+        --disk-size: calc((100vw - var(--header-width) - (2 * var(--default-padding-sections)) - (5 * var(--default-space-between-discs))) / 6);
+        height: var(--disk-size);
+        width: var(--disk-size);
+    }
+}
+
+@media all and (max-width: 992px) {
+    main{
+        background-color: red;
+    }
+
+    article.disk {
+        --disk-size: calc((100vw - var(--header-width) - (2 * var(--default-padding-sections)) - (3 * var(--default-space-between-discs))) / 4);
+        height: var(--disk-size);
+        width: var(--disk-size);
+    }
+
+    article.disk:nth-child(4n + 1) {
+        margin-left: 0;
+    }
+
+    div.discs {
+        justify-content: flex-start;
+    }
+}
+
+@media all and (max-width: 768px) {
+    main{
+        background-color: orange;
+    }
+
+    article.disk {
+        --disk-size: calc((100vw - var(--header-width) - (2 * var(--default-padding-sections)) - var(--default-space-between-discs)) / 2);
+        height: var(--disk-size);
+        width: var(--disk-size);
+    }
+
+    article.disk:nth-child(2n + 1) {
+        margin-left: 0;
+    }
+}
+
+@media all and (max-width: 576px) {
+    main{
+        background-color: yellow;
+    }
+
+    :root{
+        --header-width: 50px;
+    }
+}
+
