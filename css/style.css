@@ -12,8 +12,12 @@ html{
     --header-width: 230px;
     --footer-height: 100px;
 
-    --default-space-between-discs: 10px;
+    --default-space-between-items: 10px;
     --default-padding-sections: 20px;
+
+    --max-items-for-row: 6;
+    --item-size: calc((1200px - var(--header-width) - (2 * var(--default-padding-sections)) - 
+        ((var(--max-items-for-row) - 1) * var(--default-space-between-items))) / var(--max-items-for-row));
 }
 
 
@@ -47,31 +51,19 @@ main{
     width: calc(100% - var(--header-width));
     height: calc(100vh - var(--footer-height)); /*non strettamente necessario*/
     background-color: blue;
+    overflow-y: scroll;
+
+    
 }
 
 main>section {
     padding: var(--default-padding-sections);
 }
 
-/* discs and disk */
-
-article.disk {
-    height: 145px;
-    width: 145px;
-    background-color: aquamarine;
-    border: 1px solid black;
-    margin-left: var(--default-space-between-discs);
-    margin-top: 20px;
-}
-
-article.disk:nth-child(1) {
-    margin-left: 0;
-}
-
-div.discs {
+/* items */
+div.items {
     justify-content: space-between;
 }
-
 
 
 
@@ -80,11 +72,44 @@ section#recently {
     
 }
 
+/* item-disk */
+article.item-disk {
+    height: var(--item-size);
+    width: var(--item-size);
+    background-color: aquamarine;
+    border: 1px solid black;
+    margin-left: var(--default-space-between-items);
+    margin-top: 20px;
+}
+
+article.item-disk:nth-child(1) {
+    margin-left: 0;
+}
+
+
+
 /* created-for */
 section#created-for {
 }
 
+section#created-for>div.items {
+    --variable-space-between-item: calc(( 100% - (var(--max-items-for-row) * var(--item-size))) / (var(--max-items-for-row) - 1));
+    width: calc( var(--variable-space-between-item) + (2 * var(--item-size)));
+}
 
+/* item-playlist */
+article.item-playlist {
+    height: var(--item-size);
+    width: var(--item-size);
+    background-color: aquamarine;
+    border: 1px solid black;
+    margin-left: var(--default-space-between-items);
+    margin-top: 20px;
+}
+
+article.item-playlist:nth-child(1) {
+    margin-left: 0;
+}
 
 
 
@@ -103,60 +128,74 @@ footer{
 /* MEDIA QUERIES */
 
 @media all and (max-width: 1200px) {
+    :root {
+        --item-size: calc((100vw - var(--header-width) - (2 * var(--default-padding-sections)) - 
+            ((var(--max-items-for-row) - 1) * var(--default-space-between-items))) / var(--max-items-for-row));
+    }
+    
     main{
         background-color: fuchsia;
     }
 
-    article.disk {
-        --disk-size: calc((100vw - var(--header-width) - (2 * var(--default-padding-sections)) - (5 * var(--default-space-between-discs))) / 6);
-        height: var(--disk-size);
-        width: var(--disk-size);
-    }
-}
-
-@media all and (max-width: 992px) {
-    main{
-        background-color: red;
+    article.item-disk {
+        height: var(--item-size);
+        width: var(--item-size);
     }
 
-    article.disk {
-        --disk-size: calc((100vw - var(--header-width) - (2 * var(--default-padding-sections)) - (3 * var(--default-space-between-discs))) / 4);
-        height: var(--disk-size);
-        width: var(--disk-size);
-    }
-
-    article.disk:nth-child(4n + 1) {
-        margin-left: 0;
-    }
-
-    div.discs {
+    div.items {
         justify-content: flex-start;
     }
 }
 
+@media all and (max-width: 992px) {
+    :root {
+        --max-items-for-row: 4;
+    }
+    
+    main{
+        background-color: red;
+    }
+
+    article.item-disk {
+        height: var(--item-size);
+        width: var(--item-size);
+    }
+
+    article.item-disk:nth-child(4n + 1) {
+        margin-left: 0;
+    }
+
+    
+}
+
 @media all and (max-width: 768px) {
+    :root{
+        --max-items-for-row: 2;
+    }
+    
     main{
         background-color: orange;
     }
 
-    article.disk {
-        --disk-size: calc((100vw - var(--header-width) - (2 * var(--default-padding-sections)) - var(--default-space-between-discs)) / 2);
-        height: var(--disk-size);
-        width: var(--disk-size);
+    article.item-disk {
+        height: var(--item-size);
+        width: var(--item-size);
     }
 
-    article.disk:nth-child(2n + 1) {
+    article.item-disk:nth-child(2n + 1) {
         margin-left: 0;
     }
 }
 
 @media all and (max-width: 576px) {
+    :root{
+        --header-width: 50px;
+    }
+    
     main{
         background-color: yellow;
     }
 
-    :root{
-        --header-width: 50px;
-    }
+    
 }
 
