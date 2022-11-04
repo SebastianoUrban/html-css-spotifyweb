@@ -8,6 +8,48 @@ html{
     font-family: 'Open Sans', sans-serif;
 }
 
-h1{
-    color: red;
+:root{
+    --header-width: 230px;
+    --footer-height: 100px;
+    --sm-size: 576px;
+    --md-size: 768px;
+    --lg-size: 992px;
+    --xl-size: 1200px;
+    --xxl-size: 1400px;
+}
+
+
+/* UTILITIES */
+.flex{
+    display: flex;
+}
+
+.flex-wrap{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+/* HEADER */
+header{
+    width: var(--header-width);
+    height: calc(100vh - var(--footer-height));
+    background-color: black;
+}
+
+
+/* MAIN */
+main{
+    width: calc(100% - var(--header-width));
+    height: calc(100vh - var(--footer-height)); /*non strettamente necessario*/
+    background-color: blue;
+}
+
+
+
+/* FOOTER */
+footer{
+    width: 100%;
+    height: var(--footer-height);
+    background-color: gray;
 }
