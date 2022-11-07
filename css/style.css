@@ -52,18 +52,49 @@ main{
     height: calc(100vh - var(--footer-height)); /*non strettamente necessario*/
     background-color: blue;
     overflow-y: scroll;
-
-    
+    color: white;
 }
 
 main>section {
     padding: var(--default-padding-sections);
 }
 
+
 /* items */
 div.items {
     justify-content: space-between;
 }
+
+div.items h3{
+    font-size: 1.2rem;
+    margin-top: 0.8rem;
+}
+
+div.items p{
+    font-size: 0.8rem;
+    margin-top: 0.4rem;
+}
+
+/* item*/
+article.item{
+    margin-top: 20px;
+    margin-left: var(--default-space-between-items);
+    text-align: center;
+}
+
+article.item:nth-child( 6n + 1) {
+    margin-left: 0;
+}
+
+div.cover {
+    height: var(--item-size);
+    width: var(--item-size);
+    background-color: aquamarine;
+    border: 1px solid black;
+}
+
+
+
 
 
 
@@ -72,19 +103,11 @@ section#recently {
     
 }
 
-/* item-disk */
-article.item-disk {
-    height: var(--item-size);
-    width: var(--item-size);
-    background-color: aquamarine;
-    border: 1px solid black;
-    margin-left: var(--default-space-between-items);
-    margin-top: 20px;
-}
 
-article.item-disk:nth-child(1) {
-    margin-left: 0;
-}
+
+
+
+
 
 
 
@@ -97,19 +120,21 @@ section#created-for>div.items {
     width: calc( var(--variable-space-between-item) + (2 * var(--item-size)));
 }
 
-/* item-playlist */
-article.item-playlist {
-    height: var(--item-size);
-    width: var(--item-size);
-    background-color: aquamarine;
-    border: 1px solid black;
-    margin-left: var(--default-space-between-items);
-    margin-top: 20px;
+
+
+
+/* popular-artists */
+section#popular-artists>div.items {
+    --variable-space-between-item: calc(( 100% - (var(--max-items-for-row) * var(--item-size))) / (var(--max-items-for-row) - 1));
+    width: calc( var(--variable-space-between-item) + (2 * var(--item-size)));
 }
 
-article.item-playlist:nth-child(1) {
-    margin-left: 0;
+article.item-artist div.cover {
+    border-radius: 50%;
+    overflow: hidden;
 }
+
+
 
 
 
@@ -137,11 +162,6 @@ footer{
         background-color: fuchsia;
     }
 
-    article.item-disk {
-        height: var(--item-size);
-        width: var(--item-size);
-    }
-
     div.items {
         justify-content: flex-start;
     }
@@ -156,12 +176,7 @@ footer{
         background-color: red;
     }
 
-    article.item-disk {
-        height: var(--item-size);
-        width: var(--item-size);
-    }
-
-    article.item-disk:nth-child(4n + 1) {
+    article.item:nth-child(4n + 1) {
         margin-left: 0;
     }
 
@@ -177,12 +192,7 @@ footer{
         background-color: orange;
     }
 
-    article.item-disk {
-        height: var(--item-size);
-        width: var(--item-size);
-    }
-
-    article.item-disk:nth-child(2n + 1) {
+    article.item:nth-child(2n + 1) {
         margin-left: 0;
     }
 }
