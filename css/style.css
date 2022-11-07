@@ -37,8 +37,27 @@ header{
     width: var(--header-width);
     height: calc(100vh - var(--footer-height));
     background-color: black;
+    color: white;
+
+    flex-direction: column;
 }
 
+header div.logo {
+    border: 1px solid white;
+    height: 70px;
+}
+
+header nav.main-nav {
+    border: 1px solid white;
+}
+
+header nav.playlist {
+    border: 1px solid white;
+}
+
+header div.profile {
+    border: 1px solid white;
+}
 
 
 
