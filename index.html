@@ -18,27 +18,43 @@
     <body>
         <div class="wrapper flex-wrap">
             <header class="flex">
-                <div class="logo">Logo</div>
-                <nav class="main-nav">
-                    <ul>
-                        <li>Home</li>
-                        <li>Cerca</li>
-                        <li>La tua libreria</li>
-                    </ul>
-                </nav>
-                <nav class="playlist">
-                    <ul>
-                        <li>Crea Playlist</li>
-                        <li>Nome Playlist</li>
-                        <li>Nome Playlist</li>
-                        <li>Nome Playlist</li>
-                        <li>Nome Playlist</li>
-                        <li>Nome Playlist</li>
-                        <li>Nome Playlist</li>
-                        <li>Nome Playlist</li>
-                    </ul>
-                </nav>
-                <div class="profile">Sebastiano Urban</div>
+                <div class="upper-header">
+                    <div class="logo">
+                        <img id="full-logo" src="./img/logo.svg" alt="">
+                        <img id="small-logo" src="./img/logo-small.svg" alt="">
+                    </div>
+                    <nav class="main-nav">
+                        <ul>
+                            <li class="flex-align-center"><i class="fa-solid fa-house"></i><p>Home</p></li>
+                            <li class="flex-align-center"><i class="fa-solid fa-magnifying-glass"></i><p>Cerca</p></li>
+                            <li class="flex-align-center"><i class="fa-solid fa-music"></i><p>La tua libreria</p></li>
+                        </ul>
+                    </nav>
+                    <nav class="playlist">
+                        <h2>PLAYLIST</h2>
+                        <ul>
+                            <li class="flex-align-center"><i class="fa-solid fa-square-plus"></i> <p>Crea Playlist</p></li>
+                            <li>Nome Playlist</li>
+                            <li>Nome Playlist</li>
+                            <li>Nome Playlist</li>
+                            <li>Nome Playlist</li>
+                            <li>Nome Playlist</li>
+                            <li>Nome Playlist</li>
+                            <li>Nome Playlist</li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="lower-header">
+                    <div class="download flex-align-center">
+                        <i class="fa-solid fa-circle-down"></i>
+                        <p>Installa App</p>
+                    </div>
+                    <hr>
+                    <div class="profile flex-align-center">
+                        <i class="fa-solid fa-circle-user"></i>
+                        <p>John Doe</p>
+                    </div>
+                </div>
             </header>
     
             <main>
