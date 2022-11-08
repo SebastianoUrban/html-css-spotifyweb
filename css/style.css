@@ -44,6 +44,12 @@ h3 {
 }
 
 
+li:hover,
+li:hover p,
+li:hover i{
+    color:white;
+}
+
 /* HEADER */
 header{
     width: var(--header-width);
@@ -212,12 +218,12 @@ article.item{
     text-align: center;
 }
 
-article.item:nth-child( 6n + 1) {
-    margin-left: 0;
-}
-
 .cover {
     width: 90%;
+}
+
+.cover:hover {
+    background-color: red;
 }
 
 
