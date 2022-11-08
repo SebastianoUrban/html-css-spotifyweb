@@ -16,8 +16,6 @@ html{
     --default-padding-sections: 20px;
 
     --max-items-for-row: 6;
-    --item-size: calc((1200px - var(--header-width) - (2 * var(--default-padding-sections)) - 
-        ((var(--max-items-for-row) - 1) * var(--default-space-between-items))) / var(--max-items-for-row));
 }
 
 
@@ -79,9 +77,46 @@ main>section {
 }
 
 
+/*  bunner upgrade */
+#banner-upgrade {
+    height: 80px;
+    width: 100%;
+    background-color: gray;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 30px;
+}
+
+
+/* recently */
+section#recently {
+    --items-on-section: 6;
+}
+
+
+/* created-for */
+section#created-for {
+    --items-on-section: 2;
+}
+
+/* popular-artists */
+section#popular-artists>div.items {
+    --items-on-section: 2;
+}
+
+article.item-artist div.cover {
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+
+
+
+
 /* items */
 div.items {
     justify-content: space-between;
+    width: calc(100% * var(--items-on-section) / var(--max-items-for-row));
 }
 
 div.items h3{
@@ -96,8 +131,9 @@ div.items p{
 
 /* item*/
 article.item{
+    width: calc(100% / var(--items-on-section));
+    max-width: calc((1200px - var(--header-width) - (2 * var(--default-padding-sections))) / var(--max-items-for-row) );
     margin-top: 20px;
-    margin-left: var(--default-space-between-items);
     text-align: center;
 }
 
@@ -105,53 +141,34 @@ article.item:nth-child( 6n + 1) {
     margin-left: 0;
 }
 
-div.cover {
-    height: var(--item-size);
-    width: var(--item-size);
-    background-color: aquamarine;
-    border: 1px solid black;
+.cover {
+    width: 90%;
 }
-
-
 
 
 
 
 /* recently */
 section#recently {
-    
 }
-
-
-
-
-
-
 
 
 
 /* created-for */
 section#created-for {
+    --items-on-section: 2;
 }
-
-section#created-for>div.items {
-    --variable-space-between-item: calc(( 100% - (var(--max-items-for-row) * var(--item-size))) / (var(--max-items-for-row) - 1));
-    width: calc( var(--variable-space-between-item) + (2 * var(--item-size)));
-}
-
-
-
 
 /* popular-artists */
 section#popular-artists>div.items {
-    --variable-space-between-item: calc(( 100% - (var(--max-items-for-row) * var(--item-size))) / (var(--max-items-for-row) - 1));
-    width: calc( var(--variable-space-between-item) + (2 * var(--item-size)));
+    --items-on-section: 2;
 }
 
-article.item-artist div.cover {
+article.item-artist .cover {
     border-radius: 50%;
     overflow: hidden;
 }
+
 
 
 
@@ -171,10 +188,9 @@ footer{
 
 /* MEDIA QUERIES */
 
-@media all and (max-width: 1200px) {
+/* @media all and (max-width: 1200px) {
     :root {
-        --item-size: calc((100vw - var(--header-width) - (2 * var(--default-padding-sections)) - 
-            ((var(--max-items-for-row) - 1) * var(--default-space-between-items))) / var(--max-items-for-row));
+        
     }
     
     main{
@@ -184,7 +200,7 @@ footer{
     div.items {
         justify-content: flex-start;
     }
-}
+} */
 
 @media all and (max-width: 992px) {
     :root {
@@ -195,11 +211,15 @@ footer{
         background-color: red;
     }
 
-    article.item:nth-child(4n + 1) {
-        margin-left: 0;
+    div.items {
+        justify-content: flex-start;
+        width: 100%;
     }
 
-    
+    article.item{
+        width: calc(100% / var(--max-items-for-row));
+        max-width: none;
+    }
 }
 
 @media all and (max-width: 768px) {
@@ -209,10 +229,6 @@ footer{
     
     main{
         background-color: orange;
-    }
-
-    article.item:nth-child(2n + 1) {
-        margin-left: 0;
     }
 }
 
