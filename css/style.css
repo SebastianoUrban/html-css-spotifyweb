@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    color: gray;
 }
 
 html{
@@ -16,8 +17,16 @@ html{
     --default-padding-sections: 20px;
 
     --max-items-for-row: 6;
+    --bg-header: #000000;
+    --bg-upgrade: #080b12;
+    --bg-main: #141922;
+    --bg-footer: #282828;
 }
 
+h2,
+h3 {
+    color: white;
+}
 
 /* UTILITIES */
 .flex{
@@ -39,8 +48,7 @@ html{
 header{
     width: var(--header-width);
     height: calc(100vh - var(--footer-height));
-    background-color: black;
-    color: white;
+    background-color: var(--bg-header);
     padding: 20px;
 
     flex-direction: column;
@@ -107,9 +115,8 @@ header li{
 main{
     width: calc(100% - var(--header-width));
     height: calc(100vh - var(--footer-height)); /*non strettamente necessario*/
-    background-color: blue;
+    background-color: var(--bg-main);
     overflow-y: scroll;
-    color: white;
 }
 
 main>section {
@@ -121,11 +128,38 @@ main>section {
 #banner-upgrade {
     height: 80px;
     width: 100%;
-    background-color: gray;
+    background-color: var(--bg-upgrade);
     justify-content: flex-end;
     align-items: center;
     padding-right: 30px;
 }
+
+#banner-upgrade button{
+    color: white;
+    padding: 0.8rem 2.5rem;
+    border-radius: 2rem;
+    background-color: black;
+    border: 1.5px solid white;
+    font-weight: 800;
+}
+
+/* nav */
+main nav {
+    justify-content: center;
+}
+
+main nav ul {
+    list-style-type: none;
+}
+
+main nav li {
+    margin: 10px 20px;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+
+
 
 
 /* recently */
@@ -172,7 +206,8 @@ div.items p{
 /* item*/
 article.item{
     width: calc(100% / var(--items-on-section));
-    max-width: calc((1200px - var(--header-width) - (2 * var(--default-padding-sections))) / var(--max-items-for-row) );
+    /* max-width: calc((1200px - var(--header-width) - (2 * var(--default-padding-sections))) / var(--max-items-for-row) ); */
+    max-width: 250px;
     margin-top: 20px;
     text-align: center;
 }
@@ -220,7 +255,7 @@ article.item-artist .cover {
 footer{
     width: 100%;
     height: var(--footer-height);
-    background-color: gray;
+    background-color: var(--bg-footer);
 }
 
 
@@ -246,10 +281,6 @@ footer{
     :root {
         --max-items-for-row: 4;
     }
-    
-    main{
-        background-color: red;
-    }
 
     div.items {
         justify-content: flex-start;
@@ -266,10 +297,6 @@ footer{
     :root{
         --max-items-for-row: 2;
     }
-    
-    main{
-        background-color: orange;
-    }
 }
 
 @media all and (max-width: 576px) {
@@ -281,17 +308,16 @@ footer{
         text-align: center;
     }
 
-    #full-logo {
+    #full-logo,
+    header p,
+    header .lower-header h2 {
         display: none;
     }
 
     #small-logo {
         display: inline-block;
     }
-    header p {
-        display: none;
-        
-    }
+    
     
     header nav.playlist {
         display: none;
@@ -299,9 +325,6 @@ footer{
 
     header i {
         margin: 7px auto;
-    }
-    main{
-        background-color: yellow;
     }
 
     
